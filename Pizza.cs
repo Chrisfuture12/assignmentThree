@@ -5,7 +5,7 @@ namespace assignemntThree
 	class Pizza
 	{
 		static int smallPrice = 10; // class variable 
-		static int largePrice = 16; 
+		static int largePrice = 16; // only static variables can be used with static methods.
 		static int smallSize = 8;
 		static int largeSize = 16;
 
