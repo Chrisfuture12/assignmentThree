@@ -4,16 +4,10 @@ namespace assignemntThree
 {
 	class Pizza
 	{
-		  int smallPrice = 10; // instance variable 
-		  int largePrice = 16; 
-		  int numPizza;
-			
-		  Pizza(int numPizza){
-			  this.numPizza = numPizza;
-		  }
-
-		  
-
+		static int smallPrice = 10; // class variable 
+		static int largePrice = 16; 
+		static int smallSize = 8;
+		static int largeSize = 16;
 
 
 
@@ -21,59 +15,80 @@ namespace assignemntThree
 		{
             Console.WriteLine("Pizza calculator: Presented by chris morris");
 		}
-		
-		public static double getInput(string x)
+		public static int numEaters(){
+			string userInE;
+			Console.WriteLine("How many people will be eating?");
+			userInE = Console.ReadLine();
+			int eatNumber = int.Parse(userInE);
+			return eatNumber;
+		}
+		public static double getInput()
 		{
 			string userInN;
-			Console.WriteLine("how many pizzas do you want " + x + "?");
+			Console.WriteLine("how many pizzas do you want?");
 			userInN = Console.ReadLine();
 			double pizzaNum = double.Parse(userInN);
             return pizzaNum;
 		}
-		public static string inputDiameter(string x)
+		public static string inputDiameter()
 		{
 			string pizzaChoice;
-			Console.WriteLine("You can order either a 'small' or 'large', What size would you like your pizza to be " + x +"? (Only 1 size per order).");
+			Console.WriteLine("You can order either a 'small' or 'large', What size would you like your pizza to be? (Only 1 size per order).");
 			pizzaChoice = Console.ReadLine();
 			return pizzaChoice;
 		}
-
+		public static double calculateCost(string x, double y)
+		{ 
+			 if (x == "small") 
+			{
+				double orderTotal = smallPrice*y;
+				return orderTotal;
+			} 
+			else if (x == "large") 
+			{
+				double orderTotal = largePrice*y;
+				return orderTotal;
+			} else
+			{
+				Console.WriteLine("Wrong!");
+				return 0;
+			}
+		}
+		public static double calcSlicePer(string x, double z, double y){
+			if (x == "small") 
+			{
+				double sizePerPer = smallSize/y*z;
+				return sizePerPer;
+			} 
+			else if (x == "large") 
+			{
+				double sizePerPer = largeSize/y*z;
+				return sizePerPer;
+			} else
+			{
+				Console.WriteLine("Wrong!");
+				return 0;
+			}
+		}
+		public static void displayResults(double a, double b, string c, double d, double e)
+		{
+			Console.WriteLine("\t Order report:");
+			Console.WriteLine("\t The number of people eating will be: "+a+".");
+			Console.WriteLine("\t The number of pizzas ordered will be: "+b+".");
+			Console.WriteLine("\t The size of the pizza(s) will be: "+c+".");
+			Console.WriteLine("\t Each person will get: "+d+" total inches of pizza, if equally split.");
+			Console.WriteLine("\t The cost of the order will be: $"+e+".");
+		}
 		public static void Main()
 		{
 		   DisplayTitle();
-		   double numPizza = getInput("chris");
-		   string pizzaSize = inputDiameter("chris");
+		   double numPplEat = numEaters();
+		   double numPizza = getInput();
+		   string pizzaSize = inputDiameter();
+		   double sizePer = calcSlicePer(pizzaSize, numPizza,numPplEat);
+		   double orderCost = calculateCost(pizzaSize,numPizza);
+		   displayResults(numPplEat,numPizza,pizzaSize,sizePer,orderCost);
 		   Console.ReadKey();
-		   
-		  		   
-		  // double numPizza2 = getInput('rafay');
-		  // double pizzaSize2 = inputDiameter('rafay');
-		  // double numPizza3 = getInput('darren');
-		   //double pizzaSize3 = inputDiameter('darren');
-		   //double allEaters = calculateEaters();
-		   //displayResults(numPizza);
-		  // displayResults(allEaters);
-
 		}
-		
-		
-		
-		/* public static double calculateCost(double x, string y)
-		{
-			if (y == "small") 
-			{
-				return smallPrice*x;
-			} 
-			else if (y == "large") 
-			{
-				return largePrice*x;
-			}
-		}
-
-		public static double calculateEaters(double )
-		{}
-		public static void displayResults(double x)
-		{}*/
-
 	}
 }
