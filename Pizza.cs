@@ -17,7 +17,7 @@ namespace assignemntThree
 		}
 		public static int numEaters(){
 			string userInE;
-			Console.WriteLine("How many people will be eating?");
+			Console.WriteLine("\nHow many people will be eating?");
 			userInE = Console.ReadLine();
 			int eatNumber = int.Parse(userInE);
 			return eatNumber;
@@ -25,7 +25,7 @@ namespace assignemntThree
 		public static double getInput()
 		{
 			string userInN;
-			Console.WriteLine("how many pizzas do you want?");
+			Console.WriteLine("\nhow many pizzas do you want?");
 			userInN = Console.ReadLine();
 			double pizzaNum = double.Parse(userInN);
             return pizzaNum;
@@ -33,8 +33,15 @@ namespace assignemntThree
 		public static string inputDiameter()
 		{
 			string pizzaChoice;
-			Console.WriteLine("You can order either a 'small' or 'large', What size would you like your pizza to be? (Only 1 size per order).");
+			Console.WriteLine("\nYou can order either a 'small' or 'large', What size would you like your pizza to be? (Only 1 size per order).");
+			Console.WriteLine("For more information regarding the size of the pizza and price, enter 'sizes'.");
 			pizzaChoice = Console.ReadLine();
+			if (pizzaChoice == "sizes"){
+				Console.WriteLine("\nThe small pizza cost $10 and is 8 inches in diameter.");
+				Console.WriteLine("The large pizza cost $16 and is 16 inches in diameter.");
+				Console.WriteLine("Please enter your desired size: 'small' or 'large'.");
+				pizzaChoice = Console.ReadLine();
+			} 
 			return pizzaChoice;
 		}
 		public static double calculateCost(string x, double y)
@@ -72,6 +79,7 @@ namespace assignemntThree
 		}
 		public static void displayResults(double a, double b, string c, double d, double e)
 		{
+			Console.WriteLine("");
 			Console.WriteLine("\t Order report:");
 			Console.WriteLine("\t The number of people eating will be: "+a+".");
 			Console.WriteLine("\t The number of pizzas ordered will be: "+b+".");
