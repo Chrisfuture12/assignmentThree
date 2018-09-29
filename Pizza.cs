@@ -15,7 +15,8 @@ namespace assignemntThree
 		{
             Console.WriteLine("Pizza calculator: Presented by chris morris");
 		}
-		public static int numEaters(){
+		public static int numEaters()
+		{
 			string userInE;
 			Console.WriteLine("\nHow many people will be eating?");
 			userInE = Console.ReadLine();
